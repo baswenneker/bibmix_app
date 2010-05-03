@@ -1,0 +1,3 @@
+[submodule "vendor/plugins/bibmix"]
+	path = vendor/plugins/bibmix
+	url = git@github.com:bwenneker/bibmix.git
