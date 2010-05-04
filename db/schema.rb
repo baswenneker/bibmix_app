@@ -9,6 +9,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20100504153748) do
+
+  create_table "references", :force => true do |t|
+    t.text     "citation"
+    t.text     "authors"
+    t.text     "title"
+    t.integer  "year"
+    t.text     "publisher"
+    t.text     "location"
+    t.text     "booktitle"
+    t.text     "journal"
+    t.text     "pages"
+    t.text     "volume"
+    t.text     "number"
+    t.text     "institution"
+    t.text     "editor"
+    t.text     "note"
+    t.text     "author"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "parser"
+  end
 
 end

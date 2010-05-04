@@ -11,13 +11,14 @@ class ParscitController < ApplicationController
 		if citation
 
 			# First parse the citation with parscit.
-			hash = parse_with_parscit(citation)
+			hash = Reference.create_with_parscit(citation).to_hash
 			@parscit_record_yaml = hash.to_yaml
 			# Convert it to a Bibmix::Record so that it can be merged with data
 			# from bibsonomy.
-			hash['author'] = hash['authors'].clone
 			
-			puts hash.to_yaml
+	puts @parscit_record_yaml
+			
+			#puts hash.to_yaml
 			record = Bibmix::Record.from_hash(hash)
 			
 			
@@ -31,7 +32,7 @@ class ParscitController < ApplicationController
       format.html
       format.json { 
   			render :json => {
-  				:parsed => hash,
+  				:parsed => record,
   				:enhanced => @enhanced_record
   			}
   		}
