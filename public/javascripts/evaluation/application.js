@@ -1,23 +1,30 @@
 var Evaluation = {
-
+	
+	'references': null,
+	
+	/**
+	 * Evaluation application initialization function.
+	 */
 	'init': function()
 	{
-		//console.log('test');
-		alert("asd");
 		this.loadEvaluationSet();
 	},
 	
+	/**
+	 * Loads the evaluation set from the server and stores it in this.references.
+	 */
 	'loadEvaluationSet': function()
 	{
-		new Ajax.Request('/evaluation/evaluation_set_js', 
+		var x = new Ajax.Request('/evaluation/evaluation_set_js', 
 			{
 				method: 'get',
-				onSuccess: function(transport) {
-					console.log(arguments)
-				}
+				onFail: function(){ alert('Could not retrieve evaluation set.'); },
+				onSuccess: function(transport) { this.references = transport.responseJSON; }.bind(this)
 			}
-		);		
-	}
+		);
+	},
+	
+	
 };
 
-document.observe("dom:loaded", Evaluation.init);
+document.observe("dom:loaded", Evaluation.init.bind(Evaluation));

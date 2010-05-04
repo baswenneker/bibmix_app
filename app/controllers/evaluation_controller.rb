@@ -5,8 +5,8 @@ class EvaluationController < ApplicationController
   def index
  	end
  
- 	def evaluation_set 		
- 		f = File.open(GOAL_FIXTURE_FILE, 'r')
+ 	def evaluation_set_js 		
+ 		f = File.open(EVALUATION_SET_FILE, 'r')
     references = YAML::load(f)
  		
  		respond_to do |format|  		
