@@ -1,0 +1,22 @@
+<ul>
+	<li>Isaac G. Councill, C. Lee Giles, Min-Yen Kan. (2008) ParsCit: An open-source CRF reference string parsing package.  To appear in the proceedings of the Language Resources and Evaluation Conference (LREC 08), Marrakesh, Morrocco, May.</li>
+</ul>
+
+<form action="" method="post">
+	<textarea id="citation" name="citation" style="width:600px;"><% #if(!@citation){ 
+			#puts "Isaac G. Councill, C. Lee Giles, Min-Yen Kan. (2008) ParsCit: An open-source CRF reference string parsing package.  To appear in the proceedings of the Language Resources and Evaluation Conference (LREC 08), Marrakesh, Morrocco, May."
+		#}else{
+			#puts @citation
+		#} 
+%></textarea><br />
+	<button>Go!</button>	
+</form>
+
+<br />
+
+<div>
+	ParsCit:
+	<pre><%=@parscit_record_yaml%></pre>
+	Enhanced:
+	<pre><%=@enhanced_record_yaml%></pre>
+</div>

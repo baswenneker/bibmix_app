@@ -1,0 +1,38 @@
+Installation
+============
+The installation is tested on a Macbook Pro running Mac OSX 10.6 Snowleopard. It
+will probably run on any *ix OS.
+
+Requirements
+------------
+
+ * [soap4r](http://dev.ctor.org/soap4r)
+
+Mac OSX 10.6 Installation
+-------------------------
+Bibmix application installation from remote git repository:
+
+	$ git clone git@github.com:bwenneker/bibmix_app.git
+	$ cd bibmix_app
+
+Then go to the bibmix plugin folder and retrieve the Bibmix submodules:
+
+	$ cd vendor/plugins/bibmix
+	$ git submodule init
+	$ git submodule update
+	
+
+ 
+Requirements installation
+-------------------------
+
+	$ sudo gem install soap4r
+	
+
+
+rake db:create:all
+rake db:test:prepare
+
+* * *
+Copyright (c) 2010 Bas Wenneker
+released under the MIT License
