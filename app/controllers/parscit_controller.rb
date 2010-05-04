@@ -11,11 +11,15 @@ class ParscitController < ApplicationController
 		if citation
 
 			# First parse the citation with parscit.
-			hash = parseWithParsCit(citation)
+			hash = parse_with_parscit(citation)
 			@parscit_record_yaml = hash.to_yaml
 			# Convert it to a Bibmix::Record so that it can be merged with data
 			# from bibsonomy.
+			hash['author'] = hash['authors'].clone
+			
+			puts hash.to_yaml
 			record = Bibmix::Record.from_hash(hash)
+			
 			
 			# Execute the mixing process.
 	  	@enhanced_record = Bibmix::Bibsonomy::MixingProcess.new(record).execute
@@ -25,16 +29,23 @@ class ParscitController < ApplicationController
 	
 		respond_to do |format|
       format.html
+      format.json { 
+  			render :json => {
+  				:parsed => hash,
+  				:enhanced => @enhanced_record
+  			}
+  		}
     end
  end
  
 private
-	def parseWithParsCit(str)
+	def parse_with_parscit(str)
 		if str.nil? || str.eql?("")
       raise 'Citation string is nil or empty'
     end
     
-    parscit_dir = "/home/bas/Documents/parscit-100401"
+    #parscit_dir = "/home/bas/Documents/parscit-100401"
+    parscit_dir = "/Users/bas/Documents/parscit-100401"
     parscit_cmd = "#{parscit_dir}/bin/parseRefStrings.pl"
     
     # Convert the passed string to UTF-8, this prevents possible

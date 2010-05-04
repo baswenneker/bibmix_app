@@ -2,12 +2,19 @@ var AbstractComparisonTable = Class.create();
 
 AbstractComparisonTable.prototype = (function(){
 // Private variables.	
-var fields = [];
+var fields = [], comparisonData = null;
 
 // Public variables/methods.
 return {	
 	
-	'initialize': function(){},
+	'container': null,
+	'item': null,
+	
+	'initialize': function(item, container)
+	{
+		this.item = item;		
+		this.container = $(container);			
+	},
 	
 	'addField': function(field)
 	{
@@ -18,6 +25,16 @@ return {
 		
 		// Push the field on the fields array.
 		fields.push(field);		
+	},
+	
+	'setComparisonData': function(newComparisonData)
+	{
+		comparisonData = newComparisonData;		
+	},
+	
+	'getComparisonData': function()
+	{
+		return comparisonData;		
 	},
 	
 	'setFields': function(newFields)
