@@ -15,10 +15,6 @@ class ParscitController < ApplicationController
 			@parscit_record_yaml = hash.to_yaml
 			# Convert it to a Bibmix::Record so that it can be merged with data
 			# from bibsonomy.
-			
-	puts @parscit_record_yaml
-			
-			#puts hash.to_yaml
 			record = Bibmix::Record.from_hash(hash)
 			
 			

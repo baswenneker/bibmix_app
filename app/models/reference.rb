@@ -1,3 +1,6 @@
+require "iconv"
+require "tempfile"
+
 class Reference < ActiveRecord::Base
 	def self.create_with_parscit(str)
 		if str.nil? || str.eql?("")
@@ -39,6 +42,7 @@ class Reference < ActiveRecord::Base
       citation.delete k
     }
     
+    citation['author'] = citation['authors']['author']
     citation['citation'] = str
     citation['parser'] = 'parscit'
 		self.create(citation)
@@ -46,7 +50,7 @@ class Reference < ActiveRecord::Base
 	
 	def to_hash
 		
-		block = ['id', 'created_at', 'updated_at', 'author', 'authors', 'parser']
+		block = ['id', 'created_at', 'updated_at', 'authors', 'parser']
 		hash = self.attributes.inject({}) do |result, element|
 		  if !block.include?(element.first)
 		  	result[element.first] = element.last
@@ -54,7 +58,6 @@ class Reference < ActiveRecord::Base
 		 	result
 		end
 		
-		hash['author'] = self.authors['author']
 		hash
 	end
 end
