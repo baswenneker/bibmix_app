@@ -13,16 +13,20 @@ Mac OSX 10.6 Installation
 Bibmix application installation from remote git repository:
 
 	$ git clone git@github.com:bwenneker/bibmix_app.git
+
+Then go to the bibmix_app folder and retrieve the Bibmix submodules:
+
 	$ cd bibmix_app
-
-Then go to the bibmix plugin folder and retrieve the Bibmix submodules:
-
-	$ cd vendor/plugins/bibmix
 	$ git submodule init
 	$ git submodule update
 	
+Now it's time to setup the database configuration for bibmix_app. You can find
+a sample configuration file in config/database.sample.yml. When the configuration
+is in place we can create the databases:
 
- 
+	$ rake db:create:all
+
+
 Requirements installation
 -------------------------
 
@@ -30,7 +34,7 @@ Requirements installation
 	
 
 
-rake db:create:all
+
 rake db:test:prepare
 
 * * *
