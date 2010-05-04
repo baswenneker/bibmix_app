@@ -43,7 +43,7 @@ private
     valid_string = ic.iconv(str << ' ')[0..-2]
     
     # The ParsCit executable only reads from file so create a
-    # temporary file an fill it with the citation string.
+    # temporary file and fill it with the citation string.
     tmp = Tempfile.new("parscit_parser_tmp")
     tmp.binmode
     tmp.puts(valid_string)
