@@ -9,10 +9,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100505120046) do
+ActiveRecord::Schema.define(:version => 20100505130300) do
 
   create_table "evaluation_citations", :force => true do |t|
     t.text     "citation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "evaluations", :force => true do |t|
+    t.integer  "evaluator_id"
+    t.integer  "evaluation_citation_id"
+    t.string   "parser"
+    t.string   "process"
+    t.boolean  "result"
+    t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "evaluators", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
