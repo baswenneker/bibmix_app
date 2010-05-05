@@ -1,0 +1,16 @@
+<h1>Editing evaluation_citation</h1>
+
+<% form_for(@evaluation_citation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :citation %><br />
+    <%= f.text_area :citation %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @evaluation_citation %> |
+<%= link_to 'Back', evaluation_citations_path %>
