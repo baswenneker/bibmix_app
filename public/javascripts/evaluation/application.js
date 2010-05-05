@@ -8,6 +8,11 @@ var Evaluation = {
 	'init': function()
 	{
 		this.loadEvaluationSet();
+		$('citation-request-btn').addEvent('click', function(){
+			Evaluation.setCurrentItem({
+				'ref': this.innerHTML
+			});
+		});
 	},
 	
 	/**
@@ -21,16 +26,27 @@ var Evaluation = {
 				onFail: function(){ alert('Could not retrieve evaluation set.'); },
 				onSuccess: function(transport) { 
 					this.references = transport.responseJSON;
-					this.loadComparisonTable(this.references.first()); 
+					try {
+						this.setCurrentItem(this.references.first());
+					}catch(e){
+						console.log(e)
+					}
 				}.bind(this)
 			}
 		);
 	},
 	
+	'setCurrentItem': function(item)
+	{
+		this.currentItem = item;
+		$('citation').update(item.ref)
+		this.loadComparisonTable(item); 
+	},
+	
 	'loadComparisonTable': function(item)
 	{
 		new RecordComparisonTable(item, $('comparison-table-container'));
-	}	
+	}
 };
 
 document.observe("dom:loaded", Evaluation.init.bind(Evaluation));
