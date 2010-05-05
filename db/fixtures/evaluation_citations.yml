@@ -1,9 +1,8 @@
 f1:
     citation: "Isaac G. Councill, C. Lee Giles, Min-Yen Kan. (2008) ParsCit: An open-source CRF reference string parsing package.  To appear in the proceedings of the Language Resources and Evaluation Conference (LREC 08), Marrakesh, Morrocco, May."
-    hash: "eb01a39485f9175afb73adc8da0487fd"
     
 f2:
     citation: "Araujo S., Schwabe D. Explorator: a tool for exploring RDF data through direct manipulation. WWW2009 workshop: Linked Data on the Web (LDOW2009). April 20th, 2009, Madrid, Spain. (submitted)"
-    hash: ""
+ 
 f3:
     citation: "van Schaick, J.(2005) Multiplicity of temporal grains in the city as research subject in urbanism. Proceedings Urbanism and Urbanisation (UPC, Barcelona, Spain) June 27-29 2005"
