@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :evaluations
+
   map.resources :evaluation_citations
 
   # The priority is based upon order of creation: first created -> highest priority.

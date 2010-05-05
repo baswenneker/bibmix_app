@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  evaluator: 
+  evaluation_citation: 
+  parser: MyString
+  process: MyString
+  result: false
+  note: MyString
+
+two:
+  evaluator: 
+  evaluation_citation: 
+  parser: MyString
+  process: MyString
+  result: false
+  note: MyString

@@ -1,0 +1,30 @@
+<h1>Listing evaluations</h1>
+
+<table>
+  <tr>
+    <th>Evaluator</th>
+    <th>Evaluation citation</th>
+    <th>Parser</th>
+    <th>Process</th>
+    <th>Result</th>
+    <th>Note</th>
+  </tr>
+
+<% @evaluations.each do |evaluation| %>
+  <tr>
+    <td><%=h evaluation.evaluator %></td>
+    <td><%=h evaluation.evaluation_citation %></td>
+    <td><%=h evaluation.parser %></td>
+    <td><%=h evaluation.process %></td>
+    <td><%=h evaluation.result %></td>
+    <td><%=h evaluation.note %></td>
+    <td><%= link_to 'Show', evaluation %></td>
+    <td><%= link_to 'Edit', edit_evaluation_path(evaluation) %></td>
+    <td><%= link_to 'Destroy', evaluation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New evaluation', new_evaluation_path %>

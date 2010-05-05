@@ -1,0 +1,35 @@
+<h1>New evaluation</h1>
+
+<% form_for(@evaluation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :evaluator %><br />
+    <%= f.text_field :evaluator %>
+  </p>
+  <p>
+    <%= f.label :evaluation_citation %><br />
+    <%= f.text_field :evaluation_citation %>
+  </p>
+  <p>
+    <%= f.label :parser %><br />
+    <%= f.text_field :parser %>
+  </p>
+  <p>
+    <%= f.label :process %><br />
+    <%= f.text_field :process %>
+  </p>
+  <p>
+    <%= f.label :result %><br />
+    <%= f.check_box :result %>
+  </p>
+  <p>
+    <%= f.label :note %><br />
+    <%= f.text_field :note %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', evaluations_path %>

@@ -1,0 +1,33 @@
+<p>
+  <b>Evaluator:</b>
+  <%=h @evaluation.evaluator %>
+</p>
+
+<p>
+  <b>Evaluation citation:</b>
+  <%=h @evaluation.evaluation_citation %>
+</p>
+
+<p>
+  <b>Parser:</b>
+  <%=h @evaluation.parser %>
+</p>
+
+<p>
+  <b>Process:</b>
+  <%=h @evaluation.process %>
+</p>
+
+<p>
+  <b>Result:</b>
+  <%=h @evaluation.result %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%=h @evaluation.note %>
+</p>
+
+
+<%= link_to 'Edit', edit_evaluation_path(@evaluation) %> |
+<%= link_to 'Back', evaluations_path %>
