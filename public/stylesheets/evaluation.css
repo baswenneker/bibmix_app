@@ -1,0 +1,18 @@
+.comparison-table{
+	width:100%;
+}
+.comparison-table td{
+	background: #ccc;
+}
+
+.c-td-index{
+	text-align:right;
+}
+.c-td-parsed, .c-td-enhanced{
+	width: 500px;
+	
+}
+#citation{
+	width: 800px;
+	height: 60px;
+}
