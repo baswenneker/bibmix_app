@@ -9,7 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100505130300) do
+ActiveRecord::Schema.define(:version => 20100506192510) do
+
+  create_table "citations", :force => true do |t|
+    t.text     "citation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "evaluation_citations", :force => true do |t|
     t.text     "citation"
@@ -19,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20100505130300) do
 
   create_table "evaluations", :force => true do |t|
     t.integer  "evaluator_id"
-    t.integer  "evaluation_citation_id"
+    t.integer  "citation_id"
     t.string   "parser"
     t.string   "process"
     t.boolean  "result"
