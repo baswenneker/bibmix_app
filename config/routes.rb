@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :citations
+
   map.resources :evaluations
 
   map.resources :evaluation_citations
