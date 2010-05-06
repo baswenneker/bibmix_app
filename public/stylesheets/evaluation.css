@@ -12,7 +12,11 @@
 	width: 500px;
 	
 }
-#citation{
+#eval-note, #citation{
 	width: 800px;
 	height: 60px;
+}
+
+.hidden{
+	display:none;
 }

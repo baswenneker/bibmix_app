@@ -6,6 +6,7 @@ class CitationsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json  { render :json => @citations }
       format.xml  { render :xml => @citations }
     end
   end

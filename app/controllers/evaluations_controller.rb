@@ -25,7 +25,19 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/new.xml
   def new
     @evaluation = Evaluation.new
-
+		
+		if request.post?
+			evaluator = Evaluator.first(:conditions => ['email = ?', params[:evaluator]])
+			if evaluator.nil?
+				evaluator = Evaluator.create({:email => params[:evaluator]})
+			end
+			
+			@evaluation.evaluator = evaluator
+			@evaluation.citation = Citation.find(params[:citation_id])
+			@evaluation.result = params[:evaluation]
+			@evaluation.save
+		end
+		
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @evaluation }

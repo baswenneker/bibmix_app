@@ -13,12 +13,11 @@ var RecordComparisonTable = Class.create(AbstractComparisonTable, {
 			{	
 				method: 'post',
 				parameters: {
-					citation: item.ref
+					citation: item.citation
 				},
 				requestHeaders: {Accept:'application/jsonrequest'},
 				onFail: function(){ alert('Could not retrieve comparison data.'); },
 				onSuccess: function(transport) {
-					 
 					this.setComparisonData(transport.responseJSON);
 					this.render();
 				}.bind(this)
@@ -99,5 +98,6 @@ var RecordComparisonTable = Class.create(AbstractComparisonTable, {
 		}.bind(this));
 		
 		element.insert(table)
+		$('eval-container').toggleClassName('hidden');
 	}
 });

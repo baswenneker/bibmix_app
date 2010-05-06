@@ -2,7 +2,10 @@
 
 <h1>Evaluation#index</h1>
 <div id="citation-container">
+	Evaluator: <br />
+	<input type="text" id="evaluator" value="b.wenneker@gmail.com"/><br />
 	Citation: <br />
+	<input type="hidden" id="citation-id" value=""/><br />
 	<textarea id="citation">
 		
 	</textarea><br />
@@ -13,6 +16,13 @@
 	<div id="comparison-table-container">
 		
 	</div>
+</div>
+
+<div id="eval-container" class="hidden">
+	<textarea id="eval-note">
+		
+	</textarea><br />
+	<a href="javascript:void(0);" id="eval-ok">Ok</a>, <a href="javascript:void(0);" id="eval-not-ok">Not Ok</a>	
 </div>
 
 <%= javascript_include_tag 'prototype' %>

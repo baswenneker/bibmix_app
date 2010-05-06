@@ -2,17 +2,36 @@ var Evaluation = {
 	
 	'references': null,
 	
+	'referencePointer': 0,
+	
 	/**
 	 * Evaluation application initialization function.
 	 */
 	'init': function()
 	{
 		this.loadEvaluationSet();
-		$('citation-request-btn').addEvent('click', function(){
+		this.initEvents();
+	},
+	
+	'initEvents': function()
+	{
+		
+		$('citation-request-btn').observe('click', function(){
 			Evaluation.setCurrentItem({
 				'ref': this.innerHTML
 			});
 		});
+		
+		$('eval-ok').observe('click', function(){
+			console.log('dasdsas')
+			try {
+				this.eval(true);
+			}catch(e){console.log(e)}
+		}.bind(this));
+		
+		$('eval-not-ok').observe('click', function(){
+			this.eval(false);
+		}.bind(this));
 	},
 	
 	/**
@@ -20,17 +39,14 @@ var Evaluation = {
 	 */
 	'loadEvaluationSet': function()
 	{
-		new Ajax.Request('/evaluation/evaluation_set_js', 
+		new Ajax.Request('/citations', 
 			{
 				method: 'get',
+				requestHeaders: {Accept:'application/jsonrequest'},
 				onFail: function(){ alert('Could not retrieve evaluation set.'); },
 				onSuccess: function(transport) { 
 					this.references = transport.responseJSON;
-					try {
-						this.setCurrentItem(this.references.first());
-					}catch(e){
-						console.log(e)
-					}
+					this.setCurrentItem(this.references[this.referencePointer]);
 				}.bind(this)
 			}
 		);
@@ -38,14 +54,37 @@ var Evaluation = {
 	
 	'setCurrentItem': function(item)
 	{
-		this.currentItem = item;
-		$('citation').update(item.ref)
-		this.loadComparisonTable(item); 
+		this.currentItem = item.citation;
+		$('citation').update(this.currentItem.citation)
+		this.loadComparisonTable(this.currentItem); 
 	},
 	
 	'loadComparisonTable': function(item)
 	{
-		new RecordComparisonTable(item, $('comparison-table-container'));
+		this.currentTable = new RecordComparisonTable(item, $('comparison-table-container'));
+	},
+	
+	'eval': function(citationIsOk)
+	{
+		
+		new Ajax.Request('/evaluations/new', 
+			{
+				method: 'post',
+				parameters: {
+					'evaluator': $('evaluator').getValue(),
+					'citation_id': this.currentTable.item.id,
+					'evaluation': citationIsOk
+				},
+				onFail: function(){ alert('Could not send evaluation.'); },
+				onSuccess: function(transport) {
+					if(this.references.length < this.referencePointer){
+						this.setCurrentItem(this.references[this.referencePointer++]);
+					}else{
+						alert('Finished evaluation');
+					}
+				}.bind(this)
+			}
+		);
 	}
 };
 

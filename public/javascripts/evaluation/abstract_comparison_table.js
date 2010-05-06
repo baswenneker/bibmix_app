@@ -25,20 +25,13 @@ return {
 	
 	'addField': function(field)
 	{
-		// Set default properties.
-		//field = Object.extend({
-			//'type': 'string'
-		//}, field);
-		
 		// Push the field on the fields array.
 		fields.push(field);		
 	},
 	
 	'getComparisonFieldData': function(field)
 	{
-		console.log(field)
 		var data = this.getComparisonData();
-		console.log(data)
 		var parsed = data['parsed'][field]||'';
 		var enhanced = data['enhanced'][field]||'';
 		return [parsed, enhanced];
