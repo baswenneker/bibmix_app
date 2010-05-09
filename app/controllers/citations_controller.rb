@@ -1,4 +1,11 @@
+require 'bibmix'
+
 class CitationsController < ApplicationController
+	
+	PARSER_FREECITE = 'freecite'
+	PARSER_PARSCIT = 'parscit'
+	DEFAULT_PARSER = PARSER_PARSCIT
+	
   # GET /citations
   # GET /citations.xml
   def index
@@ -82,5 +89,36 @@ class CitationsController < ApplicationController
       format.html { redirect_to(citations_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def parse
+  	citation = params[:citation]
+  	parser = params.fetch('parser', DEFAULT_PARSER)
+  	
+		if citation
+
+			# First parse the citation with parscit.
+			if parser == PARSER_PARSCIT
+				hash = Reference.create_with_parscit(citation).to_hash
+			elsif parser == PARSER_FREECITE
+				hash = Reference.create_with_freecite(citation).to_hash
+			end
+			
+			# Convert it to a Bibmix::Record so that it can be merged with data
+			# from bibsonomy.
+			record = Bibmix::Record.from_hash(hash)
+			
+			
+			# Execute the mixing process.
+	  	enhanced_record = Bibmix::Bibsonomy::MixingProcess.new(record).execute
+		end
+	
+		respond_to do |format|
+      format.json { 
+  			render :json => {
+  				:parsed => record,
+  				:enhanced => enhanced_record
+  			}
+  		}
   end
 end
