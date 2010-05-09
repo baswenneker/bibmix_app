@@ -18,15 +18,14 @@ var Evaluation = {
 		
 		$('citation-request-btn').observe('click', function(){
 			Evaluation.setCurrentItem({
-				'ref': this.innerHTML
+				citation: {
+					'ref': this.innerHTML
+				}
 			});
 		});
 		
 		$('eval-ok').observe('click', function(){
-			console.log('dasdsas')
-			try {
-				this.eval(true);
-			}catch(e){console.log(e)}
+			this.eval(true);
 		}.bind(this));
 		
 		$('eval-not-ok').observe('click', function(){
@@ -55,7 +54,7 @@ var Evaluation = {
 	'setCurrentItem': function(item)
 	{
 		this.currentItem = item.citation;
-		$('citation').update(this.currentItem.citation)
+		$('citation').update(this.currentItem.citation);
 		this.loadComparisonTable(this.currentItem); 
 	},
 	
@@ -78,9 +77,9 @@ var Evaluation = {
 				onFail: function(){ alert('Could not send evaluation.'); },
 				onSuccess: function(transport) {
 					if(this.references.length < this.referencePointer){
-						this.setCurrentItem(this.references[this.referencePointer++]);
-					}else{
 						alert('Finished evaluation');
+					}else{
+						this.setCurrentItem(this.references[++this.referencePointer]);						
 					}
 				}.bind(this)
 			}

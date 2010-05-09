@@ -3,7 +3,7 @@ class CitationsController < ApplicationController
   # GET /citations.xml
   def index
     @citations = Citation.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json  { render :json => @citations }

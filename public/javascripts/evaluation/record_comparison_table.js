@@ -2,6 +2,7 @@ var RecordComparisonTable = Class.create(AbstractComparisonTable, {
 	'initialize': function($super, item, container)
 	{
 		$super(item, container);
+		$('eval-container').toggleClassName('hidden');
 		this.setupFields();
 		this.loadComparisonData();
 	},

@@ -13,7 +13,8 @@ return {
 	'initialize': function(item, container)
 	{
 		this.item = item;		
-		this.container = $(container);			
+		this.container = $(container);
+		this.container.innerHTML  = '';		
 	},
 	
 	'addFields': function()
@@ -26,7 +27,9 @@ return {
 	'addField': function(field)
 	{
 		// Push the field on the fields array.
-		fields.push(field);		
+		if (fields.indexOf(field) === -1) {
+			fields.push(field);
+		}		
 	},
 	
 	'getComparisonFieldData': function(field)
