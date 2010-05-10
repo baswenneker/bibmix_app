@@ -10,7 +10,7 @@ var RecordComparisonTable = Class.create(AbstractComparisonTable, {
 	'loadComparisonData': function(item)
 	{
 		item = item || this.item;
-		new Ajax.Request('/citations/parse_with_parscit', 
+		new Ajax.Request('/citations/parse', 
 			{	
 				method: 'post',
 				parameters: {

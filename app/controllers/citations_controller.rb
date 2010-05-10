@@ -95,7 +95,7 @@ class CitationsController < ApplicationController
   	citation = params[:citation]
   	parser = params.fetch('parser', DEFAULT_PARSER)
   	
-		if citation
+  	if citation
 
 			# First parse the citation with parscit.
 			if parser == PARSER_PARSCIT
@@ -112,7 +112,7 @@ class CitationsController < ApplicationController
 			# Execute the mixing process.
 	  	enhanced_record = Bibmix::Bibsonomy::MixingProcess.new(record).execute
 		end
-	
+		
 		respond_to do |format|
       format.json { 
   			render :json => {
@@ -120,5 +120,6 @@ class CitationsController < ApplicationController
   				:enhanced => enhanced_record
   			}
   		}
+  	end
   end
 end

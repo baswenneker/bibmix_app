@@ -1,15 +1,15 @@
 <%= stylesheet_link_tag 'evaluation' %>
 
-<h1>Evaluation#index</h1>
+<h1>Evaluation</h1>
+<form id="evaluation-form" method="post" action="">
 <div id="citation-container">
 	Evaluator: <br />
-	<input type="text" id="evaluator" value="b.wenneker@gmail.com"/><br />
-	Citation: <br />
-	<input type="hidden" id="citation-id" value=""/><br />
-	<textarea id="citation">
-		
-	</textarea><br />
-	<button id="citation-request-btn">Go!</button>
+	<input type="text" id="evaluator" name="evaluator" value="b.wenneker@gmail.com"/><br />
+	Citation:
+	<input type="hidden" id="citation-id" name="citation-id" value=""/><br />
+	<textarea id="citation" name="citation"></textarea><br />
+	<input type="radio" name="parser" value="parscit" id="radio-parscit"/> <label for="radio-parscit">parscit</label>
+	<input type="radio" name="parser" value="freecite" id="radio-freecite"/> <label for="radio-freecite">freecite</label>
 </div>
 
 <div id="comparison-container">
@@ -19,12 +19,13 @@
 </div>
 
 <div id="eval-container">
-	<textarea id="eval-note">
-		
-	</textarea><br />
-	<a href="javascript:void(0);" id="eval-ok">Ok</a>, <a href="javascript:void(0);" id="eval-not-ok">Not Ok</a>	
+	<textarea id="eval-note"></textarea><br />
+	<input type="radio" name="evaluation" id="eval-ok" value="1"/> <label for="eval-ok">OK</label> 
+	<input type="radio" name="evaluation" id="eval-not-ok" value="0"/> <label for="eval-not-ok">Not OK</label> 
+	<br />
+	<button type="button" id="evaluation-btn">Send</button>
 </div>
-
+</form>
 <%= javascript_include_tag 'prototype' %>
 
 <%= javascript_include_tag 'evaluation/abstract_comparison_table' %>
