@@ -1,5 +1,7 @@
 <h1>Listing evaluations</h1>
 
+<%= render :partial => "shared/pie", :locals => {:evaluations => @evaluations } %>
+
 <table>
   <tr>
     <th>Evaluator</th>
@@ -13,7 +15,7 @@
 <% @evaluations.each do |evaluation| %>
   <tr>
     <td><%=h evaluation.evaluator %></td>
-    <td><%=h evaluation.evaluation_citation %></td>
+    <td><%=h evaluation.citation %></td>
     <td><%=h evaluation.parser %></td>
     <td><%=h evaluation.process %></td>
     <td><%=h evaluation.result %></td>

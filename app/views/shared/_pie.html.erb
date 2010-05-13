@@ -1,0 +1,32 @@
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load('visualization', '1', {packages: ['piechart']});
+</script>
+<script type="text/javascript">
+  function drawVisualization() {
+    // Create and populate the data table.
+    var data = new google.visualization.DataTable();
+    
+	data.addColumn('string', 'Evaluation');
+    data.addColumn('number', 'Count');
+    data.addRows(2);
+	<% 
+	correct = 0
+	@evaluations.each do |evaluation| 
+		correct = correct + 1 if evaluation.result
+	end 
+	incorrect = @evaluations.size - correct;
+	%>
+    data.setValue(0, 0, 'Correct');
+    data.setValue(0, 1, <%= correct %>);
+    data.setValue(1, 0, 'Incorrect');
+    data.setValue(1, 1, <%= incorrect %>);
+  
+    // Create and draw the visualization.
+    new google.visualization.PieChart(document.getElementById('visualization')).draw(data);
+  }
+  
+  google.setOnLoadCallback(drawVisualization);
+</script>
+
+<div id="visualization" style="width: 400px; height: 400px;"></div>

@@ -13,17 +13,30 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/1
   # GET /evaluations/1.xml
   def show
-
+		
+		default_evaluator_id = 33078332
+		
   	begin
   		@evaluation = Evaluation.find(params[:id], :include => :citation)
   		@citation = @evaluation.citation
   	rescue ActiveRecord::RecordNotFound
   		@evaluation = Evaluation.new
-  		@citation = find_next_citation
+  		if default_evaluator_id
+  			evaluator = Evaluator.find(default_evaluator_id)
+  		else
+  			evaluator = Evaluator.first(:conditions => ['email = "b.wenneker@gmail.com"'])
+  		end
+  		
+  		@citation = find_next_citation(evaluator.id)
   	end
 		
 		if request.post?
-			evaluator = Evaluator.first(:conditions => ['email = ?', params[:evaluator]])
+			if default_evaluator_id
+  			evaluator = Evaluator.find(default_evaluator_id)
+  		else
+  			evaluator = Evaluator.first(:conditions => ['email = ?', params[:evaluator]])
+  		end
+
 			if evaluator.nil?
 				evaluator = Evaluator.create({:email => params[:evaluator]})
 			end
