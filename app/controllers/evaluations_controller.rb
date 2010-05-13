@@ -41,6 +41,9 @@ class EvaluationsController < ApplicationController
 				evaluator = Evaluator.create({:email => params[:evaluator]})
 			end
 			
+			existing = Evaluation.first(:conditions => {:evaluator_id => evaluator.id, :citation_id => params[:citation_id]})
+			
+			@evaluation = existing if existing
 			@evaluation.evaluator = evaluator
 			@evaluation.citation = Citation.find(params[:citation_id])
 			@evaluation.note = params[:note]
