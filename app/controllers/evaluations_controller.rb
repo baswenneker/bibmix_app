@@ -13,12 +13,33 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/1
   # GET /evaluations/1.xml
   def show
-  	begin
-  		@evaluation = Evaluation.find(params[:id])
-  	rescue ActiveRecord::RecordNotFound
-  		
-  	end
 
+  	begin
+  		@evaluation = Evaluation.find(params[:id], :include => :citation)
+  		@citation = @evaluation.citation
+  	rescue ActiveRecord::RecordNotFound
+  		@evaluation = Evaluation.new
+  		@citation = find_next_citation
+  	end
+		
+		if request.post?
+			evaluator = Evaluator.first(:conditions => ['email = ?', params[:evaluator]])
+			if evaluator.nil?
+				evaluator = Evaluator.create({:email => params[:evaluator]})
+			end
+			
+			@evaluation.evaluator = evaluator
+			@evaluation.citation = Citation.find(params[:citation_id])
+			@evaluation.note = params[:note]
+			@evaluation.result = params[:evaluation]
+			@evaluation.parser = params[:parser]
+			@evaluation.save
+			
+			@evaluation = Evaluation.new
+			@evaluation.evaluator = evaluator
+  		@citation = find_next_citation(evaluator.id)
+		end
+	
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @evaluation }
@@ -98,5 +119,29 @@ class EvaluationsController < ApplicationController
       format.html { redirect_to(evaluations_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  protected
+  def find_next_citation(evaluator_id=nil)
+
+  	if evaluator_id
+  		begin
+  			citation = Citation.first(:conditions => ["citations.id not in (SELECT e.citation_id FROM evaluations e WHERE e.evaluator_id = ?)", evaluator_id])
+	  		return citation if not citation.nil?
+	  	rescue ActiveRecord::RecordNotFound
+	  	end 
+  	end
+  	
+  	begin
+  		citation = Citation.first(:joins => ',evaluations ', :conditions => ["citations.id not in (SELECT e.citation_id FROM evaluations e)"])
+	  	return citation if not citation.nil?
+	  rescue ActiveRecord::RecordNotFound
+	  end 
+  	
+  	begin
+  		citation = Citation.first()
+  		return citation
+  	rescue ActiveRecord::RecordNotFound
+  	end
   end
 end

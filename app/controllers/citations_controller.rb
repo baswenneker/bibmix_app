@@ -92,7 +92,8 @@ class CitationsController < ApplicationController
   end
   
   def parse
-  	citation = params[:citation]
+		
+  	citation = Citation.find(params[:id]).citation
   	parser = params.fetch('parser', DEFAULT_PARSER)
   	
   	if citation

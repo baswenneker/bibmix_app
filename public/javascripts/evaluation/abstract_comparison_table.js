@@ -10,9 +10,9 @@ return {
 	'container': null,
 	'item': null,
 	
-	'initialize': function(item, container)
+	'initialize': function(citation_id, container)
 	{
-		this.item = item;		
+		this.citation_id = citation_id;		
 		this.container = $(container);
 		this.container.innerHTML  = '';		
 	},

@@ -1,15 +1,15 @@
 <%= stylesheet_link_tag 'evaluation' %>
 
 <h1>Evaluation</h1>
-<form id="evaluation-form" method="post" action="/evaluations/new">
+<form id="evaluation-form" method="post" action="/evaluations/show">
 <div id="citation-container">
 	Evaluator: <br />
-	<input type="text" id="evaluator" name="evaluator" value="b.wenneker@gmail.com"/><br />
+	<input type="text" id="evaluator" name="evaluator" value="<%= @evaluation.evaluator %>"/><br />
 	Citation:
-	<input type="hidden" id="citation-id" name="citation_id" value=""/><br />
-	<textarea id="citation" name="citation"></textarea><br />
-	<input type="radio" name="parser" value="parscit" id="radio-parscit"/> <label for="radio-parscit">parscit</label>
-	<input type="radio" name="parser" value="freecite" id="radio-freecite"/> <label for="radio-freecite">freecite</label>
+	<input type="hidden" id="citation-id" name="citation_id" value="<%= @citation.id %>"/><br />
+	<div><%= @citation.citation %></div><br />
+	<input type="radio" name="parser" value="parscit" id="radio-parscit" <%=(@evaluation.parser=='parscit'?'checked="checked"':'')%>/> <label for="radio-parscit">parscit</label>
+	<input type="radio" name="parser" value="freecite" id="radio-freecite" <%=(@evaluation.parser=='freecite'?'checked="checked"':'')%>/> <label for="radio-freecite">freecite</label>
 </div>
 
 <div id="comparison-container">
@@ -19,11 +19,12 @@
 </div>
 
 <div id="eval-container">
+	Note:<br />
 	<textarea id="eval-note"></textarea><br />
 	<input type="radio" name="evaluation" id="eval-ok" value="1"/> <label for="eval-ok">OK</label> 
 	<input type="radio" name="evaluation" id="eval-not-ok" value="0"/> <label for="eval-not-ok">Not OK</label> 
 	<br />
-	<button type="button" id="evaluation-btn">Send</button>
+	<input type="submit" id="evaluation-btn">Send</button>
 </div>
 </form>
 <%= javascript_include_tag 'prototype' %>

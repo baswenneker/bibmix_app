@@ -11,9 +11,8 @@ var Evaluation = {
 	 */
 	'init': function()
 	{
-		this.loadEvaluationSet();
 		this.initForm();
-		this.initEvents();
+		this.loadComparisonTable();
 	},
 	
 	'initForm': function()
@@ -30,36 +29,15 @@ var Evaluation = {
 		}
 	},
 	
-	'initEvents': function()
+	'loadComparisonTable': function()
 	{
-		
-		$('evaluation-btn').observe('click', function(){
-			this.eval(true);
-		}.bind(this));
-		/*
-		$('eval-not-ok').observe('click', function(){
-			this.eval(false);
-		}.bind(this));
-		*/
-		
-		
-		/*
-$('citation-request-btn').observe('click', function(){
-			Evaluation.setCurrentItem({
-				citation: {
-					'ref': this.innerHTML
-				}
-			});
-		});
-		
-		$('eval-ok').observe('click', function(){
-			this.eval(true);
-		}.bind(this));
-		
-		$('eval-not-ok').observe('click', function(){
-			this.eval(false);
-		}.bind(this));
-*/
+		var value = $('citation-id').getValue();
+		if(!value){
+			alert('No citation id found!');
+			return;			
+		}
+
+		new RecordComparisonTable(value, $('comparison-table-container'));
 	},
 	
 	/**
@@ -67,6 +45,7 @@ $('citation-request-btn').observe('click', function(){
 	 */
 	'loadEvaluationSet': function()
 	{
+		
 		new Ajax.Request('/citations', 
 			{
 				method: 'get',
@@ -86,7 +65,7 @@ $('citation-request-btn').observe('click', function(){
 		this.loadComparisonTable(this.currentItem); 
 	},
 	
-	'loadComparisonTable': function(item)
+	'loadComparisonTable2': function(item)
 	{
 		this.currentTable = new RecordComparisonTable(item, $('comparison-table-container'));
 	},

@@ -1,23 +1,21 @@
 var RecordComparisonTable = Class.create(AbstractComparisonTable, {
-	'initialize': function($super, item, container)
+	'initialize': function($super, citation_id, container)
 	{
-		$super(item, container);
+		$super(citation_id, container);
 		$('eval-container').toggleClassName('hidden');
 		this.setupFields();
 		this.loadComparisonData();
 	},
 	
-	'loadComparisonData': function(item)
+	'loadComparisonData': function(citation_id)
 	{
-		item = item || this.item;
-		
-		$('citation').update(item.citation);
-		$('citation-id').setValue(item.id);
+		citation_id = citation_id || this.citation_id;
+
 		new Ajax.Request('/citations/parse', 
 			{	
 				method: 'post',
 				parameters: {
-					citation: item.citation
+					id: citation_id
 				},
 				requestHeaders: {Accept:'application/jsonrequest'},
 				onFail: function(){ alert('Could not retrieve comparison data.'); },
