@@ -17,12 +17,6 @@ ActiveRecord::Schema.define(:version => 20100506192510) do
     t.datetime "updated_at"
   end
 
-  create_table "evaluation_citations", :force => true do |t|
-    t.text     "citation"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "evaluations", :force => true do |t|
     t.integer  "evaluator_id"
     t.integer  "citation_id"

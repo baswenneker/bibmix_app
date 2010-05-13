@@ -1,33 +1,37 @@
-<p>
-  <b>Evaluator:</b>
-  <%=h @evaluation.evaluator %>
-</p>
+<%= stylesheet_link_tag 'evaluation' %>
 
-<p>
-  <b>Evaluation citation:</b>
-  <%=h @evaluation.evaluation_citation %>
-</p>
+<h1>Evaluation</h1>
+<form id="evaluation-form" method="post" action="/evaluations/new">
+<div id="citation-container">
+	Evaluator: <br />
+	<input type="text" id="evaluator" name="evaluator" value="b.wenneker@gmail.com"/><br />
+	Citation:
+	<input type="hidden" id="citation-id" name="citation_id" value=""/><br />
+	<textarea id="citation" name="citation"></textarea><br />
+	<input type="radio" name="parser" value="parscit" id="radio-parscit"/> <label for="radio-parscit">parscit</label>
+	<input type="radio" name="parser" value="freecite" id="radio-freecite"/> <label for="radio-freecite">freecite</label>
+</div>
 
-<p>
-  <b>Parser:</b>
-  <%=h @evaluation.parser %>
-</p>
+<div id="comparison-container">
+	<div id="comparison-table-container">
+		
+	</div>
+</div>
 
-<p>
-  <b>Process:</b>
-  <%=h @evaluation.process %>
-</p>
+<div id="eval-container">
+	<textarea id="eval-note"></textarea><br />
+	<input type="radio" name="evaluation" id="eval-ok" value="1"/> <label for="eval-ok">OK</label> 
+	<input type="radio" name="evaluation" id="eval-not-ok" value="0"/> <label for="eval-not-ok">Not OK</label> 
+	<br />
+	<button type="button" id="evaluation-btn">Send</button>
+</div>
+</form>
+<%= javascript_include_tag 'prototype' %>
 
-<p>
-  <b>Result:</b>
-  <%=h @evaluation.result %>
-</p>
+<%= javascript_include_tag 'evaluation/abstract_comparison_table' %>
+<%= javascript_include_tag 'evaluation/abstract_record' %>
+<%= javascript_include_tag 'evaluation/record' %>
+<%= javascript_include_tag 'evaluation/record_comparison_table' %>
+<%= javascript_include_tag 'evaluation/application' %>
 
-<p>
-  <b>Note:</b>
-  <%=h @evaluation.note %>
-</p>
-
-
-<%= link_to 'Edit', edit_evaluation_path(@evaluation) %> |
-<%= link_to 'Back', evaluations_path %>
+ 

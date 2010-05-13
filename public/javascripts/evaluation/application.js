@@ -33,8 +33,6 @@ var Evaluation = {
 	'initEvents': function()
 	{
 		
-		
-		
 		$('evaluation-btn').observe('click', function(){
 			this.eval(true);
 		}.bind(this));
@@ -85,7 +83,6 @@ $('citation-request-btn').observe('click', function(){
 	'setCurrentItem': function(item)
 	{
 		this.currentItem = item.citation;
-		$('citation').update(this.currentItem.citation);
 		this.loadComparisonTable(this.currentItem); 
 	},
 	

@@ -13,7 +13,11 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/1
   # GET /evaluations/1.xml
   def show
-    @evaluation = Evaluation.find(params[:id])
+  	begin
+  		@evaluation = Evaluation.find(params[:id])
+  	rescue ActiveRecord::RecordNotFound
+  		
+  	end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,11 +39,12 @@ class EvaluationsController < ApplicationController
 			@evaluation.evaluator = evaluator
 			@evaluation.citation = Citation.find(params[:citation_id])
 			@evaluation.result = params[:evaluation]
+			@evaluation.parser = params[:parser]
 			@evaluation.save
 		end
 		
     respond_to do |format|
-      format.html # new.html.erb
+      #format.html # new.html.erb
       format.xml  { render :xml => @evaluation }
     end
   end

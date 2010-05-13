@@ -10,6 +10,9 @@ var RecordComparisonTable = Class.create(AbstractComparisonTable, {
 	'loadComparisonData': function(item)
 	{
 		item = item || this.item;
+		
+		$('citation').update(item.citation);
+		$('citation-id').setValue(item.id);
 		new Ajax.Request('/citations/parse', 
 			{	
 				method: 'post',

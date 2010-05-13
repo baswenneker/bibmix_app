@@ -1,12 +1,12 @@
 <%= stylesheet_link_tag 'evaluation' %>
 
 <h1>Evaluation</h1>
-<form id="evaluation-form" method="post" action="">
+<form id="evaluation-form" method="post" action="/evaluations/new">
 <div id="citation-container">
 	Evaluator: <br />
 	<input type="text" id="evaluator" name="evaluator" value="b.wenneker@gmail.com"/><br />
 	Citation:
-	<input type="hidden" id="citation-id" name="citation-id" value=""/><br />
+	<input type="hidden" id="citation-id" name="citation_id" value=""/><br />
 	<textarea id="citation" name="citation"></textarea><br />
 	<input type="radio" name="parser" value="parscit" id="radio-parscit"/> <label for="radio-parscit">parscit</label>
 	<input type="radio" name="parser" value="freecite" id="radio-freecite"/> <label for="radio-freecite">freecite</label>
