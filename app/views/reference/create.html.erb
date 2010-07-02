@@ -1,0 +1,19 @@
+<div id="header-wrap">
+	<div class="center">		
+		<h1>Enter a citation:</h1>
+		<div class="textarea"><textarea id="citation">Isaac G. Councill, C. Lee Giles, Min-Yen Kan. (2008) ParsCit: An open-source CRF reference string parsing package.  To appear in the proceedings of the Language Resources and Evaluation Conference (LREC 08), Marrakesh, Morrocco, May.</textarea></div><br />
+		<button id="queryBtn">Query</button>
+	</div>	
+</div>
+<div id="action-wrap">
+	<div class="center">
+		<h2>Result:</h2>	
+		<div id="record-table">
+						
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+var RecordFields = <%=@record.to_json%>
+</script>

@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Seacite</title>
+    <%= stylesheet_link_tag 'reference/default' %>
+</head>
+<body>
+    <%= yield %>
+	<div id="footer-wrap">	
+		<div id="footer" class="center">
+			Bas Wenneker
+		</div>
+	</div>
+	<%= javascript_include_tag 'reference/lib/mootools-1.2.4-core' %>
+    <%= javascript_include_tag 'reference/app' %>
+</body>
+</html>

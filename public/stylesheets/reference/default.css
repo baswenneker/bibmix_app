@@ -1,0 +1,87 @@
+* {
+	padding:0px;
+	margin:0px;	
+}
+
+body{
+	background-color: #FAFAFA;	
+	font-family:Tahoma,Verdana,Arial,Helvetica,sans-serif;
+	font-size:10px;
+}
+
+h1, h2{color:#253B57;}
+div#header-wrap{
+	background-color:#26ADE4;	
+	border-bottom: 5px solid #ADE2F7;
+	padding:10px;
+}
+
+div.center{
+	margin:0px auto;
+	width:800px;
+}
+
+textarea{
+	outline: 0;
+}
+
+div.textarea{
+	padding: 3px 0px;
+	margin: 5px 0;
+	-moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    border-radius: 2px;
+	background:#fff;
+	border: 5px solid #ADE2F7;
+}
+textarea{
+	width:780px;
+	height:100px;
+	padding:0 3px;
+	font-family:Tahoma,Verdana,Arial,Helvetica,sans-serif;
+	font-size:13px;
+   	border: 0;
+    resize: none;
+}
+
+div#action-wrap{
+	border-top: 1px solid #fff;
+	font-size:13px;
+	padding-top:5px;
+}
+#record-table{
+	font-family:monaco,"Bitstream Vera Sans Mono","Courier New",courier,monospace;	
+	background:#EDEDED;
+	margin:10px 0;
+	padding:5px;
+	-moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    border-radius: 2px;
+}
+.header-td{
+	background-color:#CCCCCC;
+}
+#record-table td{
+	border-top:1px solid #FAFAFA;
+	padding: 2px;
+}
+div#footer{
+	border-top: 1px solid #ccc;
+	margin-top:20px;
+}
+
+/*** Legend */
+.legend{margin:5px 0;}
+.legend span{font-family:monaco,"Bitstream Vera Sans Mono","Courier New",courier,monospace;}
+.volume{background:#CF6791; color:#F7EBF0;}
+.year{background:#F7EBF0;color:#CF6791;}
+.author{background:#B0DEE6;color:#07768A;}
+.title{background:#FFC9DC; color:#802042;}
+.location{background:#949494;color:#E6E6E6;}
+.booktitle{background:#F1E9BE;color:#635C34;}
+.editor{background:#7F89B5; color:#E4E7F7;}
+.journal{background:#CDE9CA; color:#375734;}
+.pages{background:#E8A249; color:#614625;}
+.note{color:#bbb;}
