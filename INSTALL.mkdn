@@ -25,17 +25,7 @@ a sample configuration file in config/database.sample.yml. When the configuratio
 is in place we can create the databases:
 
 	$ rake db:create:all
-
-
-Requirements installation
--------------------------
-
-	$ sudo gem install soap4r
-	
-
-
-
-rake db:test:prepare
+	$ rake db:test:prepare
 
 * * *
 Copyright (c) 2010 Bas Wenneker
