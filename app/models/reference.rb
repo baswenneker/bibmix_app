@@ -22,10 +22,17 @@ class Reference < ActiveRecord::Base
     tmp.binmode
     tmp.puts(valid_string)
     tmp.close()
-      
-    xml = `perl "#{parscit_cmd}" "#{tmp.path()}"`    
-    hsh = Hash.from_xml(xml)
     
+    xml = `perl "#{parscit_cmd}" "#{tmp.path()}"` 
+    
+    
+    #begin
+			valid_xml = ic.iconv(xml)
+    	hsh = Hash.from_xml(valid_xml)
+   	#rescue
+   	#	puts valid_xml
+   	#	exit
+   	#end
     citation = hsh['algorithm']['citationList']['citation']
     
     tmp.unlink
