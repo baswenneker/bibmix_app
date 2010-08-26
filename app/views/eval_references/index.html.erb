@@ -1,0 +1,68 @@
+<h1>Listing eval_references</h1>
+
+<table>
+  <tr>
+    <th>Referencetype</th>
+    <th>Address</th>
+    <th>Annotate</th>
+    <th>Author</th>
+    <th>Booktitle</th>
+    <th>Chapter</th>
+    <th>Crossref</th>
+    <th>Edition</th>
+    <th>Editor</th>
+    <th>Howpublished</th>
+    <th>Institution</th>
+    <th>Journal</th>
+    <th>Key</th>
+    <th>Month</th>
+    <th>Note</th>
+    <th>Number</th>
+    <th>Organization</th>
+    <th>Pages</th>
+    <th>Publisher</th>
+    <th>School</th>
+    <th>Series</th>
+    <th>Title</th>
+    <th>Type</th>
+    <th>Volume</th>
+    <th>Year</th>
+  </tr>
+
+<% @eval_references.each do |eval_reference| %>
+  <tr>
+    <td><%=h eval_reference.referencetype %></td>
+    <td><%=h eval_reference.address %></td>
+    <td><%=h eval_reference.annotate %></td>
+    <td><%=h eval_reference.author %></td>
+    <td><%=h eval_reference.booktitle %></td>
+    <td><%=h eval_reference.chapter %></td>
+    <td><%=h eval_reference.crossref %></td>
+    <td><%=h eval_reference.edition %></td>
+    <td><%=h eval_reference.editor %></td>
+    <td><%=h eval_reference.howpublished %></td>
+    <td><%=h eval_reference.institution %></td>
+    <td><%=h eval_reference.journal %></td>
+    <td><%=h eval_reference.key %></td>
+    <td><%=h eval_reference.month %></td>
+    <td><%=h eval_reference.note %></td>
+    <td><%=h eval_reference.number %></td>
+    <td><%=h eval_reference.organization %></td>
+    <td><%=h eval_reference.pages %></td>
+    <td><%=h eval_reference.publisher %></td>
+    <td><%=h eval_reference.school %></td>
+    <td><%=h eval_reference.series %></td>
+    <td><%=h eval_reference.title %></td>
+    <td><%=h eval_reference.type %></td>
+    <td><%=h eval_reference.volume %></td>
+    <td><%=h eval_reference.year %></td>
+    <td><%= link_to 'Show', eval_reference %></td>
+    <td><%= link_to 'Edit', edit_eval_reference_path(eval_reference) %></td>
+    <td><%= link_to 'Destroy', eval_reference, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New eval_reference', new_eval_reference_path %>

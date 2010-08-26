@@ -9,12 +9,44 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100506192510) do
+ActiveRecord::Schema.define(:version => 20100825220621) do
 
   create_table "citations", :force => true do |t|
     t.text     "citation"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "eval_references", :force => true do |t|
+    t.string   "referencetype"
+    t.string   "address"
+    t.text     "annotate"
+    t.text     "author"
+    t.text     "booktitle"
+    t.string   "chapter"
+    t.string   "crossref"
+    t.string   "edition"
+    t.text     "editor"
+    t.string   "howpublished"
+    t.string   "institution"
+    t.string   "journal"
+    t.string   "key"
+    t.string   "month"
+    t.string   "note"
+    t.string   "number"
+    t.string   "organization"
+    t.string   "pages"
+    t.string   "publisher"
+    t.string   "school"
+    t.string   "series"
+    t.text     "title"
+    t.string   "mytype"
+    t.string   "volume"
+    t.string   "year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "citation"
+    t.string   "status"
   end
 
   create_table "evaluations", :force => true do |t|

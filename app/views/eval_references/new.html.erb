@@ -1,0 +1,111 @@
+<h1>New eval_reference</h1>
+
+<% form_for(@eval_reference) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :referencetype %><br />
+    <%= f.text_field :referencetype %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :annotate %><br />
+    <%= f.text_area :annotate %>
+  </p>
+  <p>
+    <%= f.label :author %><br />
+    <%= f.text_area :author %>
+  </p>
+  <p>
+    <%= f.label :booktitle %><br />
+    <%= f.text_area :booktitle %>
+  </p>
+  <p>
+    <%= f.label :chapter %><br />
+    <%= f.text_field :chapter %>
+  </p>
+  <p>
+    <%= f.label :crossref %><br />
+    <%= f.text_field :crossref %>
+  </p>
+  <p>
+    <%= f.label :edition %><br />
+    <%= f.text_field :edition %>
+  </p>
+  <p>
+    <%= f.label :editor %><br />
+    <%= f.text_area :editor %>
+  </p>
+  <p>
+    <%= f.label :howpublished %><br />
+    <%= f.text_field :howpublished %>
+  </p>
+  <p>
+    <%= f.label :institution %><br />
+    <%= f.text_field :institution %>
+  </p>
+  <p>
+    <%= f.label :journal %><br />
+    <%= f.text_field :journal %>
+  </p>
+  <p>
+    <%= f.label :key %><br />
+    <%= f.text_field :key %>
+  </p>
+  <p>
+    <%= f.label :month %><br />
+    <%= f.text_field :month %>
+  </p>
+  <p>
+    <%= f.label :note %><br />
+    <%= f.text_field :note %>
+  </p>
+  <p>
+    <%= f.label :number %><br />
+    <%= f.text_field :number %>
+  </p>
+  <p>
+    <%= f.label :organization %><br />
+    <%= f.text_field :organization %>
+  </p>
+  <p>
+    <%= f.label :pages %><br />
+    <%= f.text_field :pages %>
+  </p>
+  <p>
+    <%= f.label :publisher %><br />
+    <%= f.text_field :publisher %>
+  </p>
+  <p>
+    <%= f.label :school %><br />
+    <%= f.text_field :school %>
+  </p>
+  <p>
+    <%= f.label :series %><br />
+    <%= f.text_field :series %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_area :title %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </p>
+  <p>
+    <%= f.label :volume %><br />
+    <%= f.text_field :volume %>
+  </p>
+  <p>
+    <%= f.label :year %><br />
+    <%= f.text_field :year %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', eval_references_path %>
