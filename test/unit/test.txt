@@ -1,1 +1,1 @@
-Zarka Cvetanovic and Dileep Bhandarkar. Characterization of the Alpha AXP Performance Using TP and SPEC Workloads. In Proceedings of the 21st Annual International Symposium on Computer Architecture, pages 60-70, April 1994.
+A. R. Bruss and A. R. Meyer. "On time-space classes and their relation to the theory of real addition". Proceedings of the Tenth Annual ACM Symposium on Theory of Computing, May, 1978, pages 233-239.

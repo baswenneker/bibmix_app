@@ -1,10 +1,15 @@
-<h1>Editing eval_reference</h1>
+<h1><%= @eval_reference.title %></h1>
 
 <style>
 td, tr {border:1px solid #ccc}
 input {width:100%}
 textarea{height:100px}
 </style>
+<a target="_blank" href="http://liinwww.ira.uka.de/csbib?query=<%= CGI.escape(@eval_reference.title) %>">CCSB</a>
+<a target="_blank" href="http://scholar.google.nl/scholar?q=<%= CGI.escape(@eval_reference.title) %>&hl=nl&btnG=Zoeken&lr=">Goog Scholar</a>
+<a target="_blank" href="http://portal.acm.org/results.cfm?query=<%= CGI.escape(@eval_reference.title) %>">ACM</a>
+<a target="_blank" href="http://dblp.l3s.de/?q=<%= CGI.escape(@eval_reference.title) %>&search_opt=all&newQuery=yes&resTableName=query_result7ktqPy&synt_query_exp=full">DBLP</a>
+<a target="_blank" href="http://www.bibsonomy.org/search/<%= CGI.escape(@eval_reference.title) %>">Bibsonomy</a>
 
 <% form_for(@eval_reference) do |f| %>
   <%= f.error_messages %>

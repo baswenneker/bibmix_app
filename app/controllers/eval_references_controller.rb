@@ -2,7 +2,7 @@ class EvalReferencesController < ApplicationController
   # GET /eval_references
   # GET /eval_references.xml
   def index
-    @eval_references = EvalReference.all(:conditions => {:referencetype => 'expert'})
+    @eval_references = EvalReference.all(:conditions => {:referencetype => 'expert', :status => '1'}, :order => "status ASC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -64,7 +64,7 @@ class EvalReferencesController < ApplicationController
     respond_to do |format|
       if @eval_reference.update_attributes(params[:eval_reference])
         flash[:notice] = 'EvalReference was successfully updated.'
-        format.html { redirect_to(@eval_reference) }
+        format.html { redirect_to(:action => 'index') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

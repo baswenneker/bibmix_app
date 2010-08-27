@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+  	 <th>xx</th>
     <th>Referencetype</th>
     <th>Address</th>
     <th>Annotate</th>
@@ -30,7 +31,12 @@
   </tr>
 
 <% @eval_references.each do |eval_reference| %>
-  <tr>
+  <tr <%
+  	if eval_reference.status != '' && eval_reference.status != '0' && eval_reference.status != nil
+		%>style="color:green"<%
+	end
+		%>>
+		<td><%= link_to 'Edit', edit_eval_reference_path(eval_reference) %></td>
     <td><%=h eval_reference.referencetype %></td>
     <td><%=h eval_reference.address %></td>
     <td><%=h eval_reference.annotate %></td>
