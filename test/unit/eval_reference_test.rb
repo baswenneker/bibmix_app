@@ -4,8 +4,10 @@ require 'bibmix'
 class EvalReferenceTest < ActiveSupport::TestCase
   
   def test_stats
-  	EvalReference.new.calcstats4
-  	
+  	#EvalReference.new.calcstats6
+  	EvalReference.new.calc_not_parsed_stats
+  	#EvalReference.new.calc_empty_fields
+  	#EvalReference.new.calcstats5
 #  	addr1 = nil
 #  	addr2 = ''
 #  	
@@ -14,13 +16,21 @@ class EvalReferenceTest < ActiveSupport::TestCase
 #  	puts x1, x2
   end
   
-  def test_new_eval
+  def _test_new_eval
   	expert_results = EvalReference.all(:conditions => {:referencetype => 'expert', :status => '1'})
   	expert_results.each do |expert|
   		ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
 	    	citation = ic.iconv(expert.citation << ' ')[0..-2]
 				
-						x = Bibmix::Pipeline.instance.execute_pipeline(citation)
+					extracted_citation_metadata = Bibmix::Parscit.new.parse_citation(citation)		
+					reference = Bibmix::ParscitMetadataProcessor.process_metadata(extracted_citation_metadata)
+					pref = EvalReference.new
+					pref.from_bibmix_reference(reference)
+					pref.referencetype = 'parsed'
+					pref.save
+					
+					
+					x = Bibmix::Pipeline.instance.execute_pipeline(citation)
 
 					
 					eref = EvalReference.new
@@ -41,15 +51,15 @@ class EvalReferenceTest < ActiveSupport::TestCase
 	    	citation = ic.iconv(citation << ' ')[0..-2]
 				
 #				if false && !EvalReference.exists?(:referencetype => "parsed", :citation => citation)
-#					extracted_citation_metadata = Bibmix::Parscit.new.parse_citation(citation)		
-#					
-#					reference = Bibmix::ParscitMetadataProcessor.process_metadata(extracted_citation_metadata)
-#					pref = EvalReference.new
-#					pref.from_bibmix_reference(reference)
-#					pref.referencetype = 'parsed'
-#					pref.save
+					extracted_citation_metadata = Bibmix::Parscit.new.parse_citation(citation)		
+					
+					reference = Bibmix::ParscitMetadataProcessor.process_metadata(extracted_citation_metadata)
+					pref = EvalReference.new
+					pref.from_bibmix_reference(reference)
+					pref.referencetype = 'parsed'
+					pref.save
 #				end
-				
+				next
 				#if !EvalReference.exists?(:referencetype => "enriched", :citation => citation)
 					puts citation
 #					begin

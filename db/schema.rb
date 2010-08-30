@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100825220621) do
+ActiveRecord::Schema.define(:version => 20100830101109) do
 
   create_table "citations", :force => true do |t|
     t.text     "citation"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20100825220621) do
   create_table "eval_references", :force => true do |t|
     t.string   "referencetype"
     t.string   "address"
-    t.text     "annotate"
+    t.text     "annote"
     t.text     "author"
     t.text     "booktitle"
     t.string   "chapter"
